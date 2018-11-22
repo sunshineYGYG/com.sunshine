@@ -1,0 +1,67 @@
+com:
+  sunshine:
+    name: yangguang
+    age: 23
+    sex: male
+server:
+  port: 8081
+
+mybatis:
+  mapper-locations: com/sunshine/shine/mapper/*.xml
+#  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.sunshine.shine.dao
+
+
+#配置数据库连接信息
+spring:
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/views/
+#      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/myDataBase?useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    ##com.mysql.jdbc.Driver
+    username: root
+    password: 12345678
+    tomcat:
+      max-idle: 10
+      max-active: 100
+      max-wait: 60000
+      initial-size: 5
+      default-transaction-isolation: 2
+      #设置默认的隔离级别
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 1000
+    jedis:
+      pool:
+        min-idle: 5
+        max-active: 10
+        max-idle: 10
+        max-wait: 2000
+  cache:
+    type: REDIS
+    cache-names: redisCache
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 10000
+      database: DemoDB
+
+  profiles:
+    active: Local
+#spring.mvc.view.prefix=/WEB-INF/jsp/
+#spring.mvc.view.suffix=.jsp
+
+#logging:
+#  level:
+#    root: DEBUG
+#    org:
+#      springframework: DEBUG
+#      org:
+#        mybatis: DEBUG
+
+
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="local"    targetRuntime="MyBatis3">
+    <commentGenerator>
+        <property name="suppressDate" value="true"/>
+        <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+    <!--数据库链接地址账号密码-->
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                    connectionURL="jdbc:mysql://127.0.0.1:3306/myDataBase?useSSL=false"
+                    userId="root"
+                    password="12345678">
+    </jdbcConnection>
+
+    <!-- 类型转换 -->
+    <javaTypeResolver>
+        <property name="forceBigDecimals" value="false"/>
+    </javaTypeResolver>
+
+    <!--生成实体类-->
+    <javaModelGenerator targetPackage="com.sunshine.shine.dao.model"
+                        targetProject="src/main/java">
+    </javaModelGenerator>
+    <!--生成SQLMAP文件-->
+    <sqlMapGenerator targetPackage="com.sunshine.shine.mapper"
+                     targetProject="src/main/java">
+    </sqlMapGenerator>
+    <!--生成Dao文件-->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.sunshine.shine.dao"
+                         targetProject="src/main/java">
+    </javaClientGenerator>
+
+    <!--生成对应表及类名-->
+        <table tableName="books" domainObjectName="books" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+    </context>
+
+</generatorConfiguration>
