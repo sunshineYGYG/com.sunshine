@@ -14,26 +14,4 @@
             </dataSource>
         </environment>
     </environments>
-    <!-- 注册mapper.xml文件 -->
-    <!--<mappers>-->
-        <!--<mapper resource="com/sunshine/shine/mapper/UserMapper.xml"/>-->
-    <!--</mappers>-->
-    <!--<settings>-->
-        <!--<setting name="defaultStatementTimeout" value="300"/>-->
-        <!--<setting name="mapUnderscoreToCamelCase" value="true"/>-->
-        <!--<setting name="logImpl" value="SLF4J"/>-->
-    <!--</settings>-->
-    <!--<typeHandlers>-->
-        <!--<typeHandler handler="com.izk.common.springmvc.typehandlers.MoneyTypeHandler"  javaType="com.izk.common.lang.money.Money" jdbcType="DECIMAL"/>-->
-        <!--<typeHandler handler="com.izk.common.springmvc.typehandlers.BooleanTypeHandler" javaType="Boolean" jdbcType="TINYINT"/>-->
-        <!--<typeHandler handler="com.izk.common.springmvc.typehandlers.ArrayTypeHandler" javaType="[Ljava.lang.String;"/>-->
-        <!--<typeHandler handler="com.izk.common.springmvc.typehandlers.ArrayTypeHandler" javaType="[Ljava.lang.Integer;"/>-->
-        <!--<typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />-->
-        <!--<typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />-->
-        <!--<typeHandler handler="org.apache.ibatis.type.LocalTimeTypeHandler" />-->
-    <!--</typeHandlers>-->
-    <!--<plugins>-->
-        <!--<plugin interceptor="com.izk.common.springmvc.interceptor.MyBatisInterceptor"></plugin>-->
-        <!--<plugin interceptor="com.izk.its.config.trace.TracingStatementInterceptor"></plugin>-->
-    <!--</plugins>-->
 </configuration>

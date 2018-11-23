@@ -3,11 +3,11 @@ com:
     name: yangguang
     age: 23
     sex: male
-server:
-  port: 8081
+#server:
+#  port: 8081
 
 mybatis:
-  mapper-locations: com/sunshine/shine/mapper/*.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml  #classpath:com/sunshine/shine/mapper/*.xml
 #  config-location: classpath:mybatis-config.xml
   type-aliases-package: com.sunshine.shine.dao
 
