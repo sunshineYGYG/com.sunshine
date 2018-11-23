@@ -5,8 +5,8 @@
 </head>
 <body>
     hello world!
-    <%--<%--%>
-        <%--System.out.println("rendering!!!");--%>
-    <%--%>--%>
+    <%
+        System.out.println("rendering!!!");
+    %>
 </body>
 </html>

@@ -20,7 +20,7 @@ public class MvcController {
     private UserMapper userMapper;
 
     @ResponseBody
-    @GetMapping("/test/requestHeader")
+    @GetMapping("/requestHeader")
     public JsonData getUser(@RequestHeader Integer id){
         User user = userMapper.selectOneUser(id);
         return JsonData.success(user);

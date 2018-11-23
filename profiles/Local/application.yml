@@ -1,23 +1,12 @@
-com:
-  sunshine:
-    name: yangguang
-    age: 23
-    sex: male
+
 #server:
 #  port: 8081
+#
 
-mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml  #classpath:com/sunshine/shine/mapper/*.xml
-#  config-location: classpath:mybatis-config.xml
-  type-aliases-package: com.sunshine.shine.dao
 
 
 #配置数据库连接信息
 spring:
-#  mvc:
-#    view:
-#      prefix: /WEB-INF/views/
-#      suffix: .jsp
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/myDataBase?useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -42,16 +31,19 @@ spring:
         max-idle: 10
         max-wait: 2000
   cache:
-    type: REDIS
-    cache-names: redisCache
+      type: REDIS
+      cache-names: redisCache
   data:
-    mongodb:
-      host: 127.0.0.1
-      port: 10000
-      database: DemoDB
+      mongodb:
+        host: 127.0.0.1
+        port: 10000
+        database: DemoDB
 
-  profiles:
-    active: Local
+
+  #  mvc:
+  #    view:
+  #      prefix: /WEB-INF/views/
+  #      suffix: .jsp
 #spring.mvc.view.prefix=/WEB-INF/jsp/
 #spring.mvc.view.suffix=.jsp
 
@@ -63,5 +55,14 @@ spring:
 #      org:
 #        mybatis: DEBUG
 
+
+#classpath:mybatis/mapper/*.xml
+  #classpath:com/sunshine/shine/mapper/*.xml
+##  config-location: classpath:mybatis-config.xml
+#  type-aliases-package: com.sunshine.shine.dao
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.sunshine.shine.dao
 
 
