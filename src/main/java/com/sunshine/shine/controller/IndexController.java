@@ -1,6 +1,7 @@
 package com.sunshine.shine.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,5 +32,15 @@ public class IndexController {
         map.put("sun","shine");
         modelAndView.addObject(map);
         return modelAndView;
+    }
+
+    @GetMapping("/test/re1")
+    public String testRedirect(){
+        return "redirect:/test/re2";
+    }
+
+    @GetMapping("/test/re2")
+    public String testRedirect2(){
+        return "index";
     }
 }

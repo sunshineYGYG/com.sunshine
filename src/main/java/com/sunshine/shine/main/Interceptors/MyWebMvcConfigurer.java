@@ -1,4 +1,4 @@
-package com.sunshine.shine.main;
+package com.sunshine.shine.main.Interceptors;
 
 import com.sunshine.shine.Interceptors.Interceptor1;
 import com.sunshine.shine.Interceptors.Interceptor2;

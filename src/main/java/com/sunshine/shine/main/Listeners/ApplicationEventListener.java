@@ -1,4 +1,4 @@
-package com.sunshine.shine.main;
+package com.sunshine.shine.main.Listeners;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

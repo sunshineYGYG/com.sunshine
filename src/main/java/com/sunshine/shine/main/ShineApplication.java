@@ -1,6 +1,7 @@
 package com.sunshine.shine.main;
 
 import com.sunshine.shine.config.ConfigBean;
+import com.sunshine.shine.main.Listeners.ApplicationEventListener;
 import org.junit.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -10,9 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
 
 //@RestController
 @SpringBootApplication
