@@ -1,11 +1,17 @@
 package com.sunshine.shine.controller;
 
+
+import org.apache.http.client.utils.DateUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,5 +48,12 @@ public class IndexController {
     @GetMapping("/test/re2")
     public String testRedirect2(){
         return "index";
+    }
+
+    @GetMapping("/test/testControllerAdvice")
+    public String testControllerAdvice(Date date, ModelMap model){
+        System.out.println(model.get("project_name"));
+        System.out.println(DateUtils.formatDate(date,"yyyy-MM-dd"));
+        throw  new RuntimeException("sunshine test!!");
     }
 }

@@ -30,7 +30,7 @@ public class UserController {
         return configBean.getName();
     }
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @GetMapping("/testMybatis")

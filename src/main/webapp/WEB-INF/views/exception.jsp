@@ -6,11 +6,9 @@
     <title>ÄãºÃ</title>
 </head>
 <body>
-<h1>rose</h1>
-<%
-    System.out.println("sunshine");
-    session.setAttribute("id",2);
-    response.sendRedirect("../test/testSession");
-%>
+<h1>aaaaaaa</h1>
+
+    ${exception_message}
+
 </body>
 </html>

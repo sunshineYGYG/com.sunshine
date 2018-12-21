@@ -1,3 +1,4 @@
+<%@ page import="com.sunshine.shine.dao.model.User" %>
 <%@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -6,11 +7,12 @@
     <title>ÄãºÃ</title>
 </head>
 <body>
-<h1>rose</h1>
+<h1>rose</h1>rin
 <%
-    System.out.println("sunshine");
-    session.setAttribute("id",2);
-    response.sendRedirect("../test/testSession");
+    User user = (User)session.getAttribute("user");
+    Integer id = (Integer)session.getAttribute("id_new");
+    out.print("<br>user_name="+user.getName());
+    out.print("<br>id="+id);
 %>
 </body>
 </html>
