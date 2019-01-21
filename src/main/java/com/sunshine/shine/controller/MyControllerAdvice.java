@@ -14,9 +14,9 @@ import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 //指定拦截所在位置
-@ControllerAdvice(basePackages = {"com.sunshine.shine.controller.*"},
-        //拦截Controller类
-    annotations = Controller.class)
+//@ControllerAdvice(basePackages = {"com.sunshine.shine.controller.*"},
+//        //拦截Controller类
+//    annotations = Controller.class)
 public class MyControllerAdvice {
 
     //数据模型注解

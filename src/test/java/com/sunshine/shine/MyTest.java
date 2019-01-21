@@ -1,14 +1,17 @@
 package com.sunshine.shine;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.assertj.core.util.DateUtil;
 import org.junit.Test;
+import sun.security.provider.MD5;
 
 import javax.xml.crypto.Data;
 import java.lang.reflect.Constructor;
 import java.net.InterfaceAddress;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -495,4 +498,55 @@ public class MyTest {
     }
 
 
+    @Test
+    public void test30(){
+        HashMap<String, String> data = new HashMap<>();
+        data.put("studentId","sss");
+        data.put("sex","ss");
+        data.put("schoolName","sss");
+//        JsonBinder.toJson(data);
+        ObjectMapper mapper=new ObjectMapper();
+        try {
+            String s = mapper.writeValueAsString(data);
+            System.out.println(s);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void test31(){
+        HashMap<String, String> data = new HashMap<>();
+        data.put("studentId","sss");
+        data.put("sex","ss");
+        data.put("schoolName","sss");
+
+        String ss = data.get("ss");
+        System.out.println(ss);
+    }
+    @Test
+    public void test32(){
+        int a=5;
+        int b=4;
+        System.out.println(division(a,b));
+    }
+
+    public static int division(int a ,int b){
+        String result = "";
+        float num =(float)a/b;
+
+        DecimalFormat df = new DecimalFormat("0");
+
+        result = df.format(num);
+        int roud = Integer.parseInt(result);
+        return roud;
+
+    }
+
+    @Test
+    public void test33(){
+        int a=5;
+        int b=2;
+        System.out.println((int)(a*1.0/b+0.5));
+    }
 }

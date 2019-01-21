@@ -12,4 +12,9 @@ public class MyController {
         System.out.println("running!!!");
         return "index";
     }
+    @RequestMapping("/hello/hello")
+    public String index2(){
+        System.out.println("running!!!");
+        return "index";
+    }
 }
