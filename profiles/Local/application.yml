@@ -44,11 +44,11 @@ spring:
   cache:
     type: REDIS
     cache-names: redisCache
-  data:
-    mongodb:
-      host: 127.0.0.1
-      port: 10000
-      database: DemoDB
+#  data:
+#    mongodb:
+#      host: 127.0.0.1
+#      port: 10000
+#      database: DemoDB
 
   profiles:
     active: Local

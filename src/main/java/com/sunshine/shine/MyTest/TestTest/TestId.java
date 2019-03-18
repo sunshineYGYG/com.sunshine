@@ -1,6 +1,6 @@
 package com.sunshine.shine.MyTest.TestTest;
 
-import com.sunshine.shine.Annotations.Id;
+import com.sunshine.shine.common.Annotations.Id;
 import com.sunshine.shine.MyTest.TestAnnotation.AnnotationTest2;
 import org.junit.Test;
 

@@ -1,7 +1,6 @@
 package com.sunshine.shine.main.Interceptors;
 
-import com.sunshine.shine.Interceptors.TokenInterceptor;
-import com.sunshine.shine.Interceptors.TokenInterceptor2;
+
 import com.sunshine.shine.main.ArgumentResolvers.TokenResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +18,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/user/*").excludePathPatterns("/user/getone2");
+//        registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/**").excludePathPatterns("/user/getone2");
     }
 
     @Override

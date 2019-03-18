@@ -1,6 +1,6 @@
 package com.sunshine.shine.MyTest.TestAnnotation;
 
-import com.sunshine.shine.Annotations.Todo;
+import com.sunshine.shine.common.Annotations.Todo;
 import org.junit.Test;
 
 import java.lang.reflect.Method;

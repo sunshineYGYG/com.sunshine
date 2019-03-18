@@ -1,4 +1,4 @@
-package com.sunshine.shine.Annotations;
+package com.sunshine.shine.common.Annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

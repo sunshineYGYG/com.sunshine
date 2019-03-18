@@ -1,4 +1,4 @@
-package com.sunshine.shine.Interceptors;
+package com.sunshine.shine.common.Interceptors;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Interceptor3 implements HandlerInterceptor {
+public class Interceptor2 implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("=pre==="+this.getClass().getSimpleName());

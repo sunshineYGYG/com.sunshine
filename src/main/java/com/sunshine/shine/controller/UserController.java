@@ -1,14 +1,11 @@
 package com.sunshine.shine.controller;
 
-import com.sunshine.shine.Annotations.UserToken;
-import com.sunshine.shine.Util.JsonData;
+import com.sunshine.shine.common.Annotations.UserToken;
 import com.sunshine.shine.config.ConfigBean;
 import com.sunshine.shine.dao.model.User;
 import com.sunshine.shine.dao.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,6 +1,6 @@
 package com.sunshine.shine.main.ArgumentResolvers;
 
-import com.sunshine.shine.Annotations.UserToken;
+import com.sunshine.shine.common.Annotations.UserToken;
 import com.sunshine.shine.dao.UserMapper;
 import com.sunshine.shine.dao.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,7 @@ import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @Component

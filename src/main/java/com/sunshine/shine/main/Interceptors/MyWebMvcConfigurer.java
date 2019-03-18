@@ -1,9 +1,10 @@
 package com.sunshine.shine.main.Interceptors;
 
-import com.sunshine.shine.Interceptors.Interceptor1;
-import com.sunshine.shine.Interceptors.Interceptor2;
-import com.sunshine.shine.Interceptors.Interceptor3;
-import com.sunshine.shine.Interceptors.TokenInterceptor;
+import com.sunshine.shine.common.Interceptors.Interceptor1;
+import com.sunshine.shine.common.Interceptors.Interceptor2;
+import com.sunshine.shine.common.Interceptors.Interceptor3;
+import com.sunshine.shine.common.Interceptors.TokenInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -45,7 +46,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        InterceptorRegistration registration = registry.addInterceptor(new TokenInterceptor());
+        InterceptorRegistration registration = registry.addInterceptor(createTokenInterceptor());
         registration.addPathPatterns("/**");
 //        InterceptorRegistration interceptor = registry.addInterceptor(new Interceptor1());
 //        interceptor.addPathPatterns("/*");
@@ -53,6 +54,11 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 //        interceptor2.addPathPatterns("/*");
 //        InterceptorRegistration interceptor3 = registry.addInterceptor(new Interceptor3());
 //        interceptor3.addPathPatterns("/*");
+    }
+
+    @Bean
+    public TokenInterceptor createTokenInterceptor(){
+        return new TokenInterceptor();
     }
 
     @Override

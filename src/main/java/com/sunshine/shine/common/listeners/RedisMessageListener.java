@@ -1,4 +1,4 @@
-package com.sunshine.shine.listeners;
+package com.sunshine.shine.common.listeners;
 
 
 import org.springframework.data.redis.connection.Message;

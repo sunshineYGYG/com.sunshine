@@ -1,6 +1,7 @@
 package com.sunshine.shine.controller;
 
 
+import com.sunshine.shine.Util.JsonData;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +19,10 @@ import java.util.Map;
 @Controller
 public class IndexController {
 
-    @RequestMapping("/test1/test1")
-    public String tt() {
+    @RequestMapping(value = "/test1/test1",produces = "application/JSON")
+    public JsonData tt() {
         System.out.println("test running!!!");
-        return "test";
+        return JsonData.success();
     }
 
     @RequestMapping("/test1/hello")

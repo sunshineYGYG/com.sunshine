@@ -1,4 +1,4 @@
-package com.sunshine.shine.Interceptors;
+package com.sunshine.shine.common.Interceptors;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

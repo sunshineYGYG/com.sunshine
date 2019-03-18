@@ -2,6 +2,7 @@ package com.sunshine.shine;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.assertj.core.util.DateUtil;
 import org.junit.Test;
 import sun.security.provider.MD5;
@@ -548,5 +549,30 @@ public class MyTest {
         int a=5;
         int b=2;
         System.out.println((int)(a*1.0/b+0.5));
+    }
+
+
+    @Test
+    public void test34(){
+        String s = DigestUtils.md5Hex("phone=15011232529&timestamp=1551175770269&sign=teacherService");
+        System.out.println(s.toUpperCase());
+    }
+
+    @Test
+    public void test35(){
+        String s = DigestUtils.md5Hex("phone=15011232529&timestamp=1551175770269&sign=teacherService");
+
+        System.out.println(s.toUpperCase());
+    }
+
+    @Test
+    public void test36(){
+        String s="false";
+        String ss="true";
+        String sss="1";
+
+        System.out.println(Boolean.valueOf(s));
+        System.out.println(Boolean.valueOf(ss));
+        System.out.println(Boolean.valueOf(sss));
     }
 }
