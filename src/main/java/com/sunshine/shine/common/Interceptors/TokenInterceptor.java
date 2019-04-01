@@ -28,6 +28,11 @@ public class TokenInterceptor implements HandlerInterceptor {
             throws Exception {
         System.out.println("preHandle");
         System.out.println("token已过期");
+        System.out.println("---");
+        System.out.println(request.getRequestURI());
+        System.out.println(request.getRequestURL());
+        System.out.println(request.getRemoteAddr());
+        System.out.println("---");
 //        sendNoLogin(response);
         return true;
     }
