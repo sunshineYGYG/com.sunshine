@@ -1,24 +1,15 @@
 package com.sunshine.shine.Util;
 
-import com.alibaba.fastjson.JSON;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.Header;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.jsonwebtoken.*;
-import io.jsonwebtoken.impl.Base64UrlCodec;
 import io.jsonwebtoken.impl.DefaultJwtBuilder;
 import io.jsonwebtoken.impl.TextCodec;
-import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.junit.Test;
 
-import javax.annotation.Resource;
-import javax.crypto.SecretKey;
 import java.lang.reflect.Field;
-import java.security.Key;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
