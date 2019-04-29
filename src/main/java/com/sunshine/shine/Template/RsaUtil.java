@@ -16,6 +16,7 @@ import java.security.PrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
 
 public class RsaUtil {
@@ -84,7 +85,8 @@ public class RsaUtil {
      */
     public static String encrypt( String str){
         String publicKey = readKey(PUBFILENAME);
-        byte[] decoded = TextCodec.BASE64.decode(publicKey);
+//        byte[] decoded = TextCodec.BASE64.decode(publicKey);
+        byte[] decoded = Base64.getDecoder().decode(publicKey);
 
         String outStr = null;
         try {
@@ -92,7 +94,8 @@ public class RsaUtil {
             //RSA加密
             Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
             cipher.init(Cipher.ENCRYPT_MODE, pubKey);
-            outStr = TextCodec.BASE64.encode(cipher.doFinal(str.getBytes("UTF-8")));
+//            outStr = TextCodec.BASE64.encode(cipher.doFinal(str.getBytes("UTF-8")));
+            outStr = Base64.getEncoder().encodeToString(cipher.doFinal(str.getBytes("UTF-8")));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,12 +112,14 @@ public class RsaUtil {
         }
         StringBuilder sb=new StringBuilder();
         String privateKey = readKey(PRIFILENAME);
-        byte[] decode = TextCodec.BASE64.decode(privateKey);
+//        byte[] decode = TextCodec.BASE64.decode(privateKey);
+        byte[] decode = Base64.getDecoder().decode(privateKey);
         try {
             PrivateKey priKey = KeyFactory.getInstance(KEY_ALGORITHM).generatePrivate(new PKCS8EncodedKeySpec(decode));
             Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
             cipher.init(Cipher.DECRYPT_MODE,priKey);
-            byte[] bytes = cipher.doFinal(TextCodec.BASE64.decode(source));
+//            byte[] bytes = cipher.doFinal(TextCodec.BASE64.decode(source));
+            byte[] bytes = cipher.doFinal(Base64.getDecoder().decode(source));
             String encode = new String(bytes);
             sb.append(encode);
         } catch (Exception e) {

@@ -3,18 +3,6 @@ package com.sunshine.shine.Util;
 import lombok.Data;
 
 
-/**
- * @title 
- * @description 
- * @company 好未来-爱智康
- * @author 杨光
- * @mobile 17600556713
- * @version 1.0
- * @created 2019/3/15 下午3:11
- * @changeRecord 
- */
-
-
 @Data
 public class JwtPayload {
     /**

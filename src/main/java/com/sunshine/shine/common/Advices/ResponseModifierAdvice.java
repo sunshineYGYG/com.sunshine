@@ -24,13 +24,13 @@ public class ResponseModifierAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        ServletServerHttpRequest ssreq = (ServletServerHttpRequest) request;
-        ServletServerHttpResponse ssresp = (ServletServerHttpResponse) response;
-        HttpServletRequest req = ssreq.getServletRequest();
-        HttpServletResponse resp = ssresp.getServletResponse();
-        resp.setHeader("token",req.getHeader("token"));
-        JsonData jsonData = (JsonData) body;
-        System.out.println(jsonData.toString());
+//        ServletServerHttpRequest ssreq = (ServletServerHttpRequest) request;
+//        ServletServerHttpResponse ssresp = (ServletServerHttpResponse) response;
+//        HttpServletRequest req = ssreq.getServletRequest();
+//        HttpServletResponse resp = ssresp.getServletResponse();
+//        resp.setHeader("token",req.getHeader("token"));
+//        JsonData jsonData = (JsonData) body;
+//        System.out.println(jsonData.toString());
         return body;
     }
 }

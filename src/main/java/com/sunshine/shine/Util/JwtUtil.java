@@ -15,17 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * @author 杨光
- * @version 1.0
- * @title
- * @description
- * @company 好未来-爱智康
- * @mobile 17600556713
- * @created 2019/3/14 下午5:26
- * @changeRecord
- */
-
 public class JwtUtil extends DefaultJwtBuilder {
 
     //一年，单位：秒
