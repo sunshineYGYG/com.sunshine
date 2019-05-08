@@ -1,6 +1,6 @@
 package com.sunshine.shine.main;
 
-import com.sunshine.shine.config.ConfigBean;
+import com.sunshine.shine.config.BeanConfig;
 import com.sunshine.shine.main.Listeners.ApplicationEventListener;
 import org.junit.Test;
 import org.mybatis.spring.annotation.MapperScan;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ImportResource;
 
 //@RestController
 @SpringBootApplication
-@EnableConfigurationProperties(value = {ConfigBean.class})
+@EnableConfigurationProperties(value = {BeanConfig.class})
 @ComponentScan("com.sunshine.shine")
 @ImportResource(locations={"classpath:web.xml"})//,"classpath:mybatis-config.xml"
 //@PropertySource({"classpath:application.properties"})
@@ -32,7 +32,7 @@ public class ShineApplication {
 //    private String sex;
 
     @Autowired
-    private ConfigBean configBean;
+    private BeanConfig beanConfig;
 
 //    @Bean(name="myAspect")
 //    public MyAspect initMyAspect(){
@@ -58,6 +58,6 @@ public class ShineApplication {
 
     @Test
     public void test(){
-        System.out.println(configBean.getName());
+        System.out.println(beanConfig.getName());
     }
 }

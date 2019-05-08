@@ -1,7 +1,7 @@
 package com.sunshine.shine.controller;
 
 import com.sunshine.shine.common.Annotations.UserToken;
-import com.sunshine.shine.config.ConfigBean;
+import com.sunshine.shine.config.BeanConfig;
 import com.sunshine.shine.dao.model.User;
 import com.sunshine.shine.dao.UserMapper;
 import org.slf4j.Logger;
@@ -20,11 +20,11 @@ import javax.annotation.Resource;
 public class UserController {
     private static final Logger LOGGER =LoggerFactory.getLogger(UserController.class);
     @Resource
-    private ConfigBean configBean;
+    private BeanConfig beanConfig;
     @GetMapping("/test")
     public String test(){
         LOGGER.info("------------come");
-        return configBean.getName();
+        return beanConfig.getName();
     }
 
     @Resource
