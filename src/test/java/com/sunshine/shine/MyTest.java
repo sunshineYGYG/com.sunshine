@@ -575,4 +575,17 @@ public class MyTest {
         System.out.println(Boolean.valueOf(ss));
         System.out.println(Boolean.valueOf(sss));
     }
+
+    @Test
+    public void test37(){
+        String s = String.valueOf(null);
+        System.out.println(s);
+    }
+
+    @Test
+    public void test38(){
+        String phone = "17600556713";
+        String s = phone.substring(0, phone.length() - 4);
+        System.out.println(s);
+    }
 }

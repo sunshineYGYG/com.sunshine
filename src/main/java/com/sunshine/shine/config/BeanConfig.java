@@ -8,16 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-/**
- * @title
- * @description
- * @company 好未来-爱智康
- * @author 杨光
- * @mobile 17600556713
- * @version 1.0
- * @created 2019/5/6 下午5:59
- * @changeRecord
- */
 
 @Data
 @Configuration

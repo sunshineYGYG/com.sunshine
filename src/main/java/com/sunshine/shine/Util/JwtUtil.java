@@ -63,9 +63,7 @@ public class JwtUtil extends DefaultJwtBuilder {
 
     @Test
     public void test3() {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6IjE1MDExMTEyMjIyIiwic2lnbl9pbl9jb3VudCI6MSwidXNlcl9pZCI6NTczMDMsImV4cCI6MTU4NDYxMjM3OCwiY2RiX3VzZXJfaWQiOjEzMTk3NSwiaWF0IjoxNTUzMDc2Mzc4LCJpc19zdHVkZW50Ijp0cnVlfQ.pxeWOeJwy0zldGMlGBGgFJ8pLt61gg8JReNsuTCa6zU";
-        String t1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTM0ODMzMTgsIm5iZiI6MTU1MzQ4MzMxOCwiZXhwIjoxNTg1MDE5MzE4LCJ1c2VyX2lkIjoiMTIzIiwicGhvbmUiOiIxMzcxNjc1ODIzNiIsInNpZ25faW5fY291bnQiOiIxIiwiaXNfc3R1ZGVudCI6ImZhbHNlIiwiY2RiX3VzZXJfaWQiOiIyOTEifQ.YHFUvssik_B9Gv_cdqiyFbEqz4K4tEDAbzwLL9THGLg";
-        String p1= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjZGJfdXNlcl9pZCI6IjExNjU4IiwicGhvbmUiOiIxODYxODE4NzcyOSIsInNpZ25faW5fY291bnQiOiIwIiwidXNlcl9pZCI6IjEiLCJpc19zdHVkZW50IjoiZmFsc2UifQ.VznvhsWevdvZYk6qMX6xav7x7m-imVAAzgrZkcO7zCo";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTgzNDE3MDcsIm5iZiI6MTU1ODM0MTcwNywic2lnbl9pbl9jb3VudCI6MTc5LCJpc19zdHVkZW50Ijp0cnVlLCJ1c2VyX2lkIjo3NDEsInBob25lIjoiMTc2MDA1NTY3MTMiLCJjZGJfdXNlcl9pZCI6MTY1OTg1LCJleHAiOjE1ODk4Nzc3MDd9.SrjgfOsUW2aPrXC1Z5cYXBtTlLbsQVB0TuBIU9MM1aM";
         JwtPayload jwtPayload = parseToken(token);
         System.out.println(jwtPayload.toString());
     }

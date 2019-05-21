@@ -113,10 +113,13 @@ public class MyTest {
 
     @Test
     public void test10(){
-        System.out.println(System.currentTimeMillis());
+        Long timeMillis = System.currentTimeMillis();
+        System.out.println(timeMillis);
         System.out.println(new Date().toString());
         System.out.println(LocalDateTime.ofInstant(Instant.ofEpochMilli(1556424435874L),ZoneId.systemDefault()));
         System.out.println(Instant.now().toEpochMilli());
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(Long.parseLong(timeMillis.toString())), ZoneId.systemDefault());
+        System.out.println(localDateTime);
     }
 
 }

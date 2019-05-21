@@ -27,7 +27,7 @@ public class JwtUtil {
 
     @Test
     public void test(){
-        String token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTM1OTExOTEsIm5iZiI6MTU1MzU5MTE5MSwiZXhwIjoxNTg1MTI3MTkxLCJwaG9uZSI6IjEzNzE2NzU4MjM2Iiwic2lnbl9pbl9jb3VudCI6MCwiaXNfc3R1ZGVudCI6ZmFsc2UsImNkYl91c2VyX2lkIjoyOTF9.MwqihZK6VM__BWv6-RWFVjh0MJPjbrDPNDkG7TN3Q6c";
+        String token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTc5MTAyNDksIm5iZiI6MTU1NzkxMDI0OSwiaXNfc3R1ZGVudCI6ZmFsc2UsInBob25lIjoiMTYxNjE2MTYxNjEiLCJleHAiOjE1ODk0NDYyNDl9.tN-OKXIzaGfGPip0_HdJH3HgDrNWopXhr3VucG47PUk";
         JwtPayload jwtPayload = parseToken(token);
         System.out.println(jwtPayload.toString());
     }

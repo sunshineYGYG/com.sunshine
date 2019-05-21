@@ -29,7 +29,7 @@ public class RsaUtil {
 
     @Test
     public void test(){
-        String str = "123456";
+        String str = "12345678";
         System.out.println("加密前："+str);
         String encrypt = encrypt(str);
         System.out.println("加密后："+encrypt);
@@ -39,7 +39,7 @@ public class RsaUtil {
 
     @Test
     public void test2(){
-        String pwd="xqRm5P+jq5SWdiJxjsJX2hCdLpE+e0IssiQeNZ81Nk24KRexag8Q63sAx0cT+Xtl1AYRTd5rf8asYUbiR4k2TwGeKXW7loxvY3FZoKb7ZTRyPd+4wUaeZSF3C6wmh+aI4hlBK1o1qgPFwU5cmr+Ae3ONnzw85r+FFq8j2xSpImw=";
+        String pwd="HBhcBP7utyzkg7PaYIT+znFaxRbvp6RNH552mKM7eMATj6qgMOdRECX5iEE0yEDaTkotFya5VC4g/ZDgysD3tGhGc/rFJZk3dIOsp/GAG/REalFrcQ+dnYf9JvF0/+jZTFoZH/4WK0ZrWF0e0PXQSu02sTRNqLNNuY4cuCstN4M=";
         String pwd2="111111";
         String decrypt = decrypt(pwd);
         System.out.println(decrypt);
