@@ -1,42 +1,47 @@
 package com.sunshine.shine.Test;
 
+import com.sunshine.shine.Util.Direction;
 import com.sunshine.shine.Util.LoginWay;
 import io.jsonwebtoken.impl.TextCodec;
 import org.junit.Test;
 
+import javax.xml.crypto.Data;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.*;
 
 public class MyTest {
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(System.getProperty("TestTest"));
 //        AnnotationConfigApplicationContext
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         Integer sms = LoginWay.PASSWORD.getValue();
+        System.out.println(LoginWay.PASSWORD);
         System.out.println(LoginWay.PASSWORD);
         System.out.println(sms);
         int i = sms.compareTo(0);
-        int num=1;
+        int num = 1;
         boolean equals = sms.equals(num);
         System.out.println(equals);
     }
+
     @Test
-    public void test3(){
-        Map<String,String> map=new HashMap<>();
-        map.put("1","2");
+    public void test3() {
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "2");
         System.out.println(map.toString());
     }
 
     @Test
-    public void test4(){
-        String str="sunshine";
+    public void test4() {
+        String str = "sunshine";
         byte[] encode = Base64.getEncoder().encode(str.getBytes());
         System.out.println(new String(encode));
 
@@ -54,18 +59,19 @@ public class MyTest {
     }
 
     @Test
-    public void test5(){
-        Integer x=1;
-        Integer y=2;
-        if(x.equals(y)){
+    public void test5() {
+        Integer x = 1;
+        Integer y = 2;
+        if (x.equals(y)) {
             System.out.println("true");
-        }else{
+        } else {
             System.out.println("false");
         }
 
     }
+
     @Test
-    public void test6(){
+    public void test6() {
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);
         System.out.println(now.toString());
@@ -82,7 +88,7 @@ public class MyTest {
 
 
     @Test
-    public void test7(){
+    public void test7() {
         String s = generateCaptcha();
         LocalDateTime now = LocalDateTime.now();
         String s1 = s + now.toString();
@@ -94,8 +100,8 @@ public class MyTest {
     }
 
     @Test
-    public void test8(){
-        System.out.println(String.format("%s,请求失败api:%s \t 参数:%s","1","2","3"));
+    public void test8() {
+        System.out.println(String.format("%s,请求失败api:%s \t 参数:%s", "1", "2", "3"));
         LocalDateTime t1 = LocalDateTime.ofInstant(Instant.ofEpochSecond(1554361663), ZoneId.systemDefault());
         LocalDateTime t2 = LocalDateTime.ofInstant(Instant.ofEpochSecond(1554807726), ZoneId.systemDefault());
         LocalDateTime t3 = LocalDateTime.ofInstant(Instant.ofEpochSecond(1554808289), ZoneId.systemDefault());
@@ -105,21 +111,54 @@ public class MyTest {
     }
 
     @Test
-    public void test9(){
-        String ver1="1.10";
-        String ver2="1.2";
+    public void test9() {
+        String ver1 = "1.10";
+        String ver2 = "1.2";
         System.out.println(ver1.compareTo(ver2));
     }
 
     @Test
-    public void test10(){
+    public void test10() {
         Long timeMillis = System.currentTimeMillis();
         System.out.println(timeMillis);
         System.out.println(new Date().toString());
-        System.out.println(LocalDateTime.ofInstant(Instant.ofEpochMilli(1556424435874L),ZoneId.systemDefault()));
+        System.out.println(LocalDateTime.ofInstant(Instant.ofEpochMilli(1556424435874L), ZoneId.systemDefault()));
         System.out.println(Instant.now().toEpochMilli());
         LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(Long.parseLong(timeMillis.toString())), ZoneId.systemDefault());
         System.out.println(localDateTime);
+    }
+
+    @Test
+    public void test11() {
+        System.out.println(Direction.FEEDBACK);
+        System.out.println(Direction.FEEDBACK.getDirection());
+        System.out.println("feedback".equals(Direction.FEEDBACK));
+        System.out.println("FEEDBACK".equals(Direction.FEEDBACK));
+        System.out.println("feedback".equals(Direction.FEEDBACK.getDirection()));
+        System.out.println("FEEDBACK".equals(Direction.FEEDBACK.getDirection()));
+    }
+
+    @Test
+    public void test12() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Date now = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        System.out.println(now);
+        LocalDateTime of = LocalDateTime.of(2019, 6, 1, 1, 10);
+        long l = of.toEpochSecond(ZoneOffset.of("+8"));
+        System.out.println(l);
+        long l1 = of.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+        System.out.println(l1);
+        Instant instant = of.toInstant(ZoneOffset.of("+8"));
+        LocalDateTime localDateTime1 = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        System.out.println(localDateTime1);
+    }
+
+
+    @Test
+    public void test13() {
+        Date date = new Date();
+        System.out.println(date);
+        System.out.println(date.getTime());
     }
 
 }

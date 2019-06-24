@@ -1,5 +1,6 @@
 package com.sunshine.shine;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -14,9 +15,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
@@ -588,4 +587,46 @@ public class MyTest {
         String s = phone.substring(0, phone.length() - 4);
         System.out.println(s);
     }
+
+    @Test
+    public void test39(){
+        Map<String,Object> map=new HashMap<>(1);
+
+        Map<String,String> todayPic =new HashMap<>(3);
+        todayPic.put("type","click");
+        todayPic.put("name","今日图片");
+        todayPic.put("key","ss");
+
+        Map<String,Object> subMenu =new HashMap<>(2);
+        List<Object> sublist=new ArrayList<>();
+        Map<String,String> find =new HashMap<>(3);
+        find.put("type","click");
+        find.put("name","今日图片2");
+        find.put("key","sss");
+        Map<String,String> view =new HashMap<>(3);
+        view.put("type","click");
+        view.put("name","搜索");
+        view.put("key","http://www.soso.com/");
+
+        sublist.add(find);
+        sublist.add(view);
+
+        subMenu.put("name","菜单");
+        subMenu.put("sub_button",sublist);
+
+
+        List<Object> menus=new ArrayList<>();
+        menus.add(todayPic);
+        menus.add(subMenu);
+
+        map.put("button",menus);
+
+        String s = map.toString();
+        System.out.println(s);
+        String s1 = JSONObject.toJSONString(map);
+        System.out.println(s1);
+    }
+
+
+
 }
