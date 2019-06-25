@@ -10,80 +10,101 @@ import java.util.Set;
 public class MovingCountClass {
 
     @Test
-    public void test(){
-        System.out.println(movingCount(40,0,0));
+    public void test() {
+        System.out.println(movingCount(10, 100, 100));
+        System.out.println(movingCount2(10, 100, 100));
     }
 
-    private Set<Point> onePoints=new HashSet<>();
+    private int threshold;
+    private int rows;
+    private int cols;
+    boolean[][] flags = null;
 
-    public int movingCount(int threshold, int rows, int cols)
-    {
-        BFS(threshold,rows,cols);
-        return onePoints.size();
+    public int movingCount(int threshold, int rows, int cols) {
+        boolean[][] booleans = new boolean[rows][cols];
+        flags = booleans;
+        this.threshold = threshold;
+        this.rows = rows;
+        this.cols = cols;
+        int dfs = dfs(0, 0);
+        return dfs;
     }
 
-    private void BFS(int threshold, int rows, int cols){
-        LinkedList<Point> queue=new LinkedList<>();
-        Point start = new Point(rows, cols);
-        if(check(threshold,start)){
-            queue.add(start);
-            onePoints.add(start);
+    private int dfs(int x, int y) {
+        if (!check(x, y)) {
+            return 0;
         }
-        while(!queue.isEmpty()){
-            Point point = queue.poll();
-            int x = point.x;
-            int y = point.y;
-            Point p1 = new Point(x+1, y);
-            if(checkoutNext(threshold,p1)){
-                queue.add(p1);
-                onePoints.add(p1);
-            }
-            Point p2 = new Point(x-1, y);
-            if(checkoutNext(threshold,p2)){
-                queue.add(p2);
-                onePoints.add(p2);
-            }
-            Point p3 = new Point(x, y-1);
-            if(checkoutNext(threshold,p3)){
-                queue.add(p3);
-                onePoints.add(p3);
-            }
-            Point p4 = new Point(x, y+1);
-            if(checkoutNext(threshold,p4)){
-                queue.add(p4);
-                onePoints.add(p4);
-            }
-        }
+        int re = 1;
+        flags[x][y] = true;
+        re += dfs(x - 1, y) + dfs(x + 1, y) + dfs(x, y - 1) + dfs(x, y + 1);
+        return re;
     }
 
-    private boolean check(int threshold,Point p){
-        int x = p.x;
-        int y = p.y;
-        int ans = 0;
-        while(x>0){
-            ans+=x%10;
-            x/=10;
-        }
-        while(y>0){
-            ans+=y%10;
-            y/=10;
-        }
-        if(ans<=threshold){
+    private boolean check(int x, int y) {
+        if (x >= 0 && x < rows && y >= 0 && y < cols && numSum(x) + numSum(y) <= threshold && !flags[x][y]) {
             return true;
         }
         return false;
     }
 
-    private boolean checkoutNext(int threshold,Point p){
-        if(p.x<0||p.y<0){
-            return false;
+    private int numSum(int num) {
+        int re = 0;
+        while (num > 0) {
+            re += num % 10;
+            num /= 10;
         }
-        if(onePoints.contains(p)){
-            return false;
+        return re;
+    }
+
+    public int movingCount2(int threshold, int rows, int cols) {
+        boolean[][] booleans = new boolean[rows][cols];
+        flags = booleans;
+        this.threshold = threshold;
+        this.rows = rows;
+        this.cols = cols;
+        int bfs = bfs();
+        return bfs;
+    }
+
+    private int bfs() {
+        LinkedList<PO> queue = new LinkedList<>();
+        if(check(0,0)) {
+            queue.addLast(new PO(0, 0));
+            flags[0][0] = true;
         }
-        if(!check(threshold,p)){
-            return false;
+        int ans = 0;
+        while (!queue.isEmpty()) {
+            PO first = queue.pollFirst();
+            int x = first.x;
+            int y = first.y;
+            ans++;
+            if (check(x - 1, y)) {
+                queue.addLast(new PO(x - 1, y));
+                flags[x - 1][y] = true;
+            }
+            if (check(x + 1, y)) {
+                queue.addLast(new PO(x + 1, y));
+                flags[x + 1][y] = true;
+            }
+            if (check(x, y - 1)) {
+                queue.addLast(new PO(x, y - 1));
+                flags[x][y - 1] = true;
+            }
+            if (check(x, y + 1)) {
+                queue.addLast(new PO(x, y + 1));
+                flags[x][y + 1] = true;
+            }
         }
-        return true;
+        return ans;
+    }
+
+    class PO {
+        int x;
+        int y;
+
+        public PO(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }
