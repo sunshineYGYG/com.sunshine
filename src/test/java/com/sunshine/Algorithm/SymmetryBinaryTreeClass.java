@@ -16,35 +16,30 @@ public class SymmetryBinaryTreeClass {
 
     @Test
     public void test(){
-        TreeNode node =new TreeNode(2);
-        if(node.right == node.left){
-            System.out.println("true");
-        }
+        TreeNode node1 =new TreeNode(1);
+        TreeNode node2 =new TreeNode(2);
+        TreeNode node3 =new TreeNode(2);
+        node1.left=node2;
+        node1.right=node3;
+        boolean symmetrical = isSymmetrical(node1);
+        System.out.println(symmetrical);
     }
 
     boolean isSymmetrical(TreeNode pRoot) {
-
-        return true;
+        return solve(pRoot,pRoot);
     }
 
     boolean solve(TreeNode nl,TreeNode nr){
-
-        return false;
-    }
-
-    boolean compare(TreeNode nl,TreeNode nr){
-        if(null ==nl && null == nr){
+        if(nl == null && nr == null){
             return true;
         }
-        if(null == nl && null != nr){
-            return false;
-        }
-        if(null != nl && null == nr){
+        if((nl ==null && nr != null)||(nl != null && nr == null)){
             return false;
         }
         if(nl.val != nr.val){
             return false;
         }
-        return true;
+        return solve(nl.left,nr.right)&&solve(nl.right,nr.left);
     }
+
 }

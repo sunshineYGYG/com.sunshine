@@ -1,11 +1,15 @@
 package com.sunshine.shine.Test;
 
+import com.alibaba.fastjson.JSONObject;
 import com.sunshine.shine.Util.Direction;
 import com.sunshine.shine.Util.LoginWay;
+import com.sunshine.shine.enums.Week;
 import io.jsonwebtoken.impl.TextCodec;
 import org.junit.Test;
 
 import javax.xml.crypto.Data;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -161,4 +165,17 @@ public class MyTest {
         System.out.println(date.getTime());
     }
 
+    @Test
+    public void test14() {
+        System.out.println(Week.Mon);
+        System.out.println(Week.Mon.equals("Mon"));
+        System.out.println(Week.Wed.compareTo(Week.Tue));
+    }
+
+    @Test
+    public void test15(){
+        String str = "WxUserInfoResp(subscribe=1, openid=oiFiD1k_YOFwfBWlF0lC7cnoUNEo, nickname=😀一1q*, sex=1, language=zh_CN, city=, province=, country=冰岛, headimgurl=http://thirdwx.qlogo.cn/mmopen/P35icYpn27HOVZgxaDNHGIOysBPqsg4kyTXwwRelULPrdGXw3Sa3AibRuLNk88yaOYxj0Nj2dt08Xou3o0yexWQMyYlW4NVFOJ/132, subscribe_time=1560784767, unionid=obwyywV1ti_AAHlhqLkb_M2q0u8s, remark=, groupid=0, tagid_list=[], subscribe_scene=ADD_SCENE_QR_CODE, qr_scene=0, qr_scene_str=)";
+        JSONObject jsonObject = JSONObject.parseObject(str);
+
+    }
 }

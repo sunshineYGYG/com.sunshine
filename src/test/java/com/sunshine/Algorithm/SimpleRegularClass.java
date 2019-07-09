@@ -14,6 +14,7 @@ public class SimpleRegularClass {
         System.out.println(match);
     }
 
+    //我的错误答案，无法判断*的使用
     public boolean match(char[] str, char[] pattern) {
         if (null == str || null == pattern) {
             return false;
@@ -95,4 +96,52 @@ public class SimpleRegularClass {
             System.out.println("no");
         }
     }
+
+    @Test
+    public void test3() {
+//        char[] str = {'a', 'a', 'a'};
+//        char[] pattern = {'a', 'b', '*', 'a', 'c', '*', 'a'};
+        char[] str = {'b', 'b', 'b', 'b', 'a'};
+        char[] pattern = {'.', '*', 'a', '*', 'a'};
+        boolean match = match2(str, pattern);
+        System.out.println(match);
+    }
+    //正确答案
+    public boolean match2(char[] str, char[] pattern) {
+        return solve(str, 0, pattern, 0);
+    }
+
+    public boolean solve(char[] str, int pos, char[] pattern, int cur) {
+        if (pos == str.length && cur == pattern.length) {
+            return true;
+        }
+        if (pos != str.length && cur == pattern.length) {
+            return false;
+        }
+        //下一个字符是*的情况
+        if (cur + 1 < pattern.length && pattern[cur + 1] == '*') {
+            //匹配成功时，走三种情况1、匹配0次2、只匹配一次，3、匹配多次
+            if (pos < str.length && (pattern[cur] == str[pos] || pattern[cur] == '.')) {
+                return solve(str, pos + 1, pattern, cur + 2) ||
+                        solve(str, pos + 1, pattern, cur) ||
+                        solve(str, pos, pattern, cur + 2);
+            }
+            //匹配失败，只能走匹配0次
+            else {
+                return solve(str, pos, pattern, cur + 2);
+            }
+        }
+        //下一个字符不是*的情况
+        else {
+            //匹配成功，走下一个字符
+            if (pos < str.length && (pattern[cur] == str[pos] || pattern[cur] == '.')) {
+                return solve(str, pos + 1, pattern, cur + 1);
+            }
+            //匹配失败，return false
+            else {
+                return false;
+            }
+        }
+    }
+
 }
