@@ -1,14 +1,21 @@
 package com.sunshine.shine.Test;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sunshine.shine.Module.Book;
+import com.sunshine.shine.Module.User;
 import com.sunshine.shine.Util.Direction;
 import com.sunshine.shine.Util.LoginWay;
 import com.sunshine.shine.enums.Week;
 import io.jsonwebtoken.impl.TextCodec;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.client.methods.HttpGet;
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 
 import javax.xml.crypto.Data;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URLEncoder;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -142,12 +149,14 @@ public class MyTest {
         System.out.println("FEEDBACK".equals(Direction.FEEDBACK.getDirection()));
     }
 
+
+
     @Test
     public void test12() {
         LocalDateTime localDateTime = LocalDateTime.now();
         Date now = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         System.out.println(now);
-        LocalDateTime of = LocalDateTime.of(2019, 6, 1, 1, 10);
+        LocalDateTime of = LocalDateTime.of(2019, 7, 30, 7, 0);
         long l = of.toEpochSecond(ZoneOffset.of("+8"));
         System.out.println(l);
         long l1 = of.toInstant(ZoneOffset.of("+8")).toEpochMilli();
@@ -178,4 +187,58 @@ public class MyTest {
         JSONObject jsonObject = JSONObject.parseObject(str);
 
     }
+
+
+    @Test
+    public void test16(){
+        HttpGet httpGet =  new HttpGet();
+        httpGet.addHeader("a","A1");
+        httpGet.addHeader("a","A2");
+        httpGet.addHeader("b","B1");
+        httpGet.setHeader("b","B2");
+        httpGet.setHeader("c","C1");
+        Header[] allHeaders = httpGet.getAllHeaders();
+        for (Header allHeader : allHeaders) {
+            System.out.println(allHeader.getName()+" : "+allHeader.getValue());
+        }
+        System.out.println("---");
+        Header[] as = httpGet.getHeaders("a");
+        for (Header a : as) {
+            System.out.println(a.getName()+" : " +a.getValue());
+        }
+        System.out.println("---");
+        Header[] bs = httpGet.getHeaders("b");
+        for (Header a : bs) {
+            System.out.println(a.getName()+" : " +a.getValue());
+        }
+        System.out.println("---");
+        Header a = httpGet.getFirstHeader("a");
+        System.out.println(a.getName()+" : " + a.getValue());
+        System.out.println("---");
+        Header a2 = httpGet.getLastHeader("a");
+        System.out.println(a2.getName()+" : " + a2.getValue());
+    }
+
+    @Test
+    public void test17(){
+        String s = null;
+        s.length();
+    }
+
+    @Test
+    public void test18(){
+        Book authUsers=new Book();
+        authUsers.setId("1");
+        authUsers.setPrice(2.1);
+        authUsers.setJumpToSchedule(3);
+        authUsers.setCreatedAt(LocalDateTime.now());
+        User appToken=new User();
+
+        System.out.println(authUsers.toString());
+        System.out.println(appToken.getId());
+        BeanUtils.copyProperties(authUsers, appToken);
+        System.out.println(authUsers.toString());
+        System.out.println(appToken.getId());
+    }
+
 }

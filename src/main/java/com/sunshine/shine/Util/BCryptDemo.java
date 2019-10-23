@@ -7,8 +7,8 @@ public class BCryptDemo {
 
     @Test
     public void test(){
-        String pwd="111111";
-        String pwdHashed="$2a$12$.dwiBZS.FDuDdFUbE8XCq.KaGXeaKwmHvVmQjamQtiusyOq5ONhNG";
+        String pwd="qwe123!";
+        String pwdHashed="$2a$10$VwnCD8a75FN6/hH7RkP/Fue0qxusXG6oOTGqB73tDn7qyE4HQESkK";
         String s = generatePWD(pwd);
         System.out.println(s);
         Boolean aBoolean = validatePWD(pwd, pwdHashed);

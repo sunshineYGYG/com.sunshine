@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -29,18 +30,26 @@ public class RsaUtil {
 
     @Test
     public void test(){
-        String str = "12345678";
+        String str = "123qwe@";
         System.out.println("加密前："+str);
         String encrypt = encrypt(str);
         System.out.println("加密后："+encrypt);
         String decrypt = decrypt(encrypt);
         System.out.println("解密后："+decrypt);
     }
+    @Test
+    public void testPri(){
+        String str = "123qwe@";
+        System.out.println("加密前："+str);
+        String encrypt = encryptPri(str);
+        System.out.println("加密后："+encrypt);
+        String decrypt = decryptPri(encrypt);
+        System.out.println("解密后："+decrypt);
+    }
 
     @Test
     public void test2(){
-        String pwd="HBhcBP7utyzkg7PaYIT+znFaxRbvp6RNH552mKM7eMATj6qgMOdRECX5iEE0yEDaTkotFya5VC4g/ZDgysD3tGhGc/rFJZk3dIOsp/GAG/REalFrcQ+dnYf9JvF0/+jZTFoZH/4WK0ZrWF0e0PXQSu02sTRNqLNNuY4cuCstN4M=";
-        String pwd2="111111";
+        String pwd="duMZrN2Ue5SKIhs6S8XhZ+qxjnE+KMuSC6fff+PKbyfMWeD2CKXhTEK1hCNiFHIeG6ue9eEVaW1VTEcomiRlQFy0U0hmi0kJizQCuTGGJjiojgRSiAyd8TmVwhYFXO1xIckVIqX1BWLqAdK+6FmucAC6LaZBSRY5rhAy+5g35kI=";
         String decrypt = decrypt(pwd);
         System.out.println(decrypt);
     }
@@ -85,15 +94,32 @@ public class RsaUtil {
      */
     public static String encrypt( String str){
         String publicKey = readKey(PUBFILENAME);
-//        byte[] decoded = TextCodec.BASE64.decode(publicKey);
         byte[] decoded = Base64.getDecoder().decode(publicKey);
 
         String outStr = null;
         try {
-            RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance(KEY_ALGORITHM).generatePublic(new X509EncodedKeySpec(decoded));
+//            RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance(KEY_ALGORITHM).generatePublic(new X509EncodedKeySpec(decoded));
+            PublicKey pubKey = KeyFactory.getInstance(KEY_ALGORITHM).generatePublic(new X509EncodedKeySpec(decoded));
             //RSA加密
             Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
             cipher.init(Cipher.ENCRYPT_MODE, pubKey);
+//            outStr = TextCodec.BASE64.encode(cipher.doFinal(str.getBytes("UTF-8")));
+            outStr = Base64.getEncoder().encodeToString(cipher.doFinal(str.getBytes("UTF-8")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return outStr;
+    }
+    public static String encryptPri(String str){
+        String publicKey = readKey(PRIFILENAME);
+        byte[] decoded = TextCodec.BASE64.decode(publicKey);
+
+        String outStr = null;
+        try {
+            PrivateKey privateKey = KeyFactory.getInstance(KEY_ALGORITHM).generatePrivate(new PKCS8EncodedKeySpec(decoded));
+            //RSA加密
+            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+            cipher.init(Cipher.ENCRYPT_MODE, privateKey);
 //            outStr = TextCodec.BASE64.encode(cipher.doFinal(str.getBytes("UTF-8")));
             outStr = Base64.getEncoder().encodeToString(cipher.doFinal(str.getBytes("UTF-8")));
         } catch (Exception e) {
@@ -112,12 +138,34 @@ public class RsaUtil {
         }
         StringBuilder sb=new StringBuilder();
         String privateKey = readKey(PRIFILENAME);
-//        byte[] decode = TextCodec.BASE64.decode(privateKey);
-        byte[] decode = Base64.getDecoder().decode(privateKey);
+        byte[] decode = TextCodec.BASE64.decode(privateKey);
         try {
             PrivateKey priKey = KeyFactory.getInstance(KEY_ALGORITHM).generatePrivate(new PKCS8EncodedKeySpec(decode));
             Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
             cipher.init(Cipher.DECRYPT_MODE,priKey);
+//            byte[] bytes = cipher.doFinal(TextCodec.BASE64.decode(source));
+            byte[] bytes = cipher.doFinal(Base64.getDecoder().decode(source));
+            String encode = new String(bytes);
+            sb.append(encode);
+        } catch (Exception e) {
+            LOGGER.error("密码或手机号解析错误");
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+    public static String decryptPri(String source){
+        if (StringUtils.isEmpty(source)){
+            LOGGER.debug("source不能为空");
+            return "";
+        }
+        StringBuilder sb=new StringBuilder();
+        String privateKey = readKey(PUBFILENAME);
+//        byte[] decode = TextCodec.BASE64.decode(privateKey);
+        byte[] decode = Base64.getDecoder().decode(privateKey);
+        try {
+            PublicKey publicKey = KeyFactory.getInstance(KEY_ALGORITHM).generatePublic(new X509EncodedKeySpec(decode));
+            Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+            cipher.init(Cipher.DECRYPT_MODE,publicKey);
 //            byte[] bytes = cipher.doFinal(TextCodec.BASE64.decode(source));
             byte[] bytes = cipher.doFinal(Base64.getDecoder().decode(source));
             String encode = new String(bytes);
