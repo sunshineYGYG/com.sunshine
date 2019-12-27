@@ -30,27 +30,27 @@ public class RsaUtil {
 
     @Test
     public void test(){
-        String str = "123qwe@";
+        String str = "111111";
         System.out.println("加密前："+str);
         String encrypt = encrypt(str);
         System.out.println("加密后："+encrypt);
-        String decrypt = decrypt(encrypt);
+        String decrypt = decryptPri(encrypt);
         System.out.println("解密后："+decrypt);
     }
     @Test
     public void testPri(){
-        String str = "123qwe@";
+        String str = "18511284891";
         System.out.println("加密前："+str);
         String encrypt = encryptPri(str);
         System.out.println("加密后："+encrypt);
-        String decrypt = decryptPri(encrypt);
+        String decrypt = decrypt(encrypt);
         System.out.println("解密后："+decrypt);
     }
 
     @Test
     public void test2(){
-        String pwd="duMZrN2Ue5SKIhs6S8XhZ+qxjnE+KMuSC6fff+PKbyfMWeD2CKXhTEK1hCNiFHIeG6ue9eEVaW1VTEcomiRlQFy0U0hmi0kJizQCuTGGJjiojgRSiAyd8TmVwhYFXO1xIckVIqX1BWLqAdK+6FmucAC6LaZBSRY5rhAy+5g35kI=";
-        String decrypt = decrypt(pwd);
+        String pwd="XbeJMDW+dJ0E2AWzWwLFw5G3ZQrQg9HsbYbhy+y0W8nuwYyj6Qg1g3QBlYxY0h7OdK9d5gxRalTO";
+        String decrypt = decryptPri(pwd);
         System.out.println(decrypt);
     }
 
@@ -131,7 +131,7 @@ public class RsaUtil {
     /***
      * rsa解密
      */
-    public static String decrypt(String source){
+    public static String decryptPri(String source){
         if (StringUtils.isEmpty(source)){
             LOGGER.debug("source不能为空");
             return "";
@@ -153,7 +153,7 @@ public class RsaUtil {
         }
         return sb.toString();
     }
-    public static String decryptPri(String source){
+    public static String decrypt(String source){
         if (StringUtils.isEmpty(source)){
             LOGGER.debug("source不能为空");
             return "";

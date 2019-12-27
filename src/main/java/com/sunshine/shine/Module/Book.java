@@ -14,4 +14,5 @@ public class Book {
     private Double price;
     private LocalDateTime createdAt;
     private Integer jumpToSchedule;
+    private Chapter chapter;
 }

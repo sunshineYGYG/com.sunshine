@@ -96,10 +96,11 @@ public class JwtUtil extends DefaultJwtBuilder {
 //        System.out.println(fields.toString());
     }
 
+    //线上
     @Test
     public void test3() {
 //        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjQ0NDY2OTYsIm5iZiI6MTU2NDQ0NjY5Niwic2lnbl9pbl9jb3VudCI6MSwiaXNfc3R1ZGVudCI6dHJ1ZSwidXNlcl9pZCI6MTE0NTY3LCJwaG9uZSI6IjEzNjgzMzEzMDUxIiwiY2RiX3VzZXJfaWQiOjE5NDExMSwiZXhwIjoxNTY1OTE3OTI1fQ.xRG6DB0gAIG0ncm3tvBvgw5aFsb9bZW_U2foZmdpWKQ
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzE1NTk0NjUsIm5iZiI6MTU3MTU1OTQ2NSwiaXNfc3R1ZGVudCI6dHJ1ZSwicGhvbmUiOiIxMzA1MTg0ODY4MSIsImNkYl91c2VyX2lkIjoyMjMxMDksImV4cCI6MTYwMzA5NTQ2NX0.VqmnSQRTEZSQLYRl5HtpLouQSryKKkLbFdXSIizAfRM";
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjQ0NDYwMzUsIm5iZiI6MTU2NDQ0NjAzNSwic2lnbl9pbl9jb3VudCI6MiwiaXNfc3R1ZGVudCI6dHJ1ZSwidXNlcl9pZCI6MTIyODQyLCJwaG9uZSI6IjE4MzEwMDA5NjI3IiwiY2RiX3VzZXJfaWQiOjIwMzQzMywiZXhwIjoxNTY1OTE3MjY0fQ.sNA-vuuLNBodcbFTIEYTSMGeqSlrh-AGq7-qZkTBpc8";
         JwtPayload jwtPayload = parseToken(token, secretkey);
         System.out.println(jwtPayload.toString());
     }
@@ -115,9 +116,10 @@ public class JwtUtil extends DefaultJwtBuilder {
         System.out.println(localDateTime2);
     }
 
+    //非线上
     @Test
     public void test33() {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzE2MjUxODEsIm5iZiI6MTU3MTYyNTE4MSwiaXNfc3R1ZGVudCI6dHJ1ZSwicGhvbmUiOiIxMzA1MTg0ODY4MSIsImNkYl91c2VyX2lkIjoyMjIwOTgsImV4cCI6MTYwMzE2MTE4MX0.fmDkDihQg5oUWWSExZ4EKyr5cT7SxsyFED8RIPA1rDw";
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTM1OTExOTEsIm5iZiI6MTU1MzU5MTE5MSwiZXhwIjoxNTg1MTI3MTkxLCJwaG9uZSI6IjEzNzE2NzU4MjM2Iiwic2lnbl9pbl9jb3VudCI6MCwiaXNfc3R1ZGVudCI6ZmFsc2UsImNkYl91c2VyX2lkIjoyOTF9.MwqihZK6VM__BWv6-RWFVjh0MJPjbrDPNDkG7TN3Q6c";
         JwtPayload jwtPayload = parseToken(token, secretkey33);
         System.out.println(jwtPayload.toString());
     }
